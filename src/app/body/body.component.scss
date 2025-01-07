@@ -1,0 +1,38 @@
+.body{
+    margin-left: 5rem;
+    // height: 100%;
+    z-index: 0;
+    padding: 1rem;
+    transition: 0.1s;
+    width: auto;
+    position: relative;
+    overflow: auto;
+    position: relative;
+    top: 58px;
+    
+    // width: calc(100% - 5rem);
+    //width: auto;
+}
+/*
+margin-left: 200px;
+  height: 500px;
+  width: auto;
+  position: relative;
+  background: #f00;
+  overflow: auto;
+  z-index: 1;
+*/
+.body-nav-collapsed{
+    margin-left: 15rem;
+    //width: calc(100% - 15rem);
+    // transition: 0.2;
+
+}
+
+@media screen and (max-width: 600px) {    
+ 
+.body{
+  margin-left: 0rem;
+ } 
+  
+}

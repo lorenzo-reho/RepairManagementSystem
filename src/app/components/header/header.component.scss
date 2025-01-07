@@ -1,0 +1,36 @@
+.navbar{
+    position: fixed;
+    height: 59px;
+    z-index: 1001;
+    width: 100%;
+    top: 0;
+    // -webkit-box-shadow: 5px 5px 10px -6px rgba(0,0,0,0.87); 
+    // box-shadow: 5px 5px 10px -6px rgba(0,0,0,0.87);
+}
+.logo-container{
+    display: flex;
+    align-items: center;
+    //justify-content: space-between;
+    padding-left: 1rem;
+    width: 100%;
+    
+    
+    .logo{
+        display: flex;    
+        text-align: center;
+        background-color: transparent;
+        border: 0;
+        font-size: 2rem;
+        padding: 0.5rem;
+        color: rgb(0, 0, 0);
+        cursor: pointer;
+    }
+
+    .logo-text{
+        color: rgb(0, 0, 0);
+        font-size: 1.5rem;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+}

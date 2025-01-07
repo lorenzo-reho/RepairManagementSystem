@@ -1,0 +1,52 @@
+.btn{
+    border-radius: 10px;
+}
+
+.btn i{
+    font-size: 1.8rem;
+}
+
+.btn span{
+    font-size: 1.15rem;
+}
+
+.navbar-container{
+    
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.search{
+    width: 350px;
+}
+
+#nav-search{
+    background-color: rgb(224, 224, 224);
+    border-radius: 10px;
+}
+
+
+@media screen and (max-width: 600px) {  }
+
+@media screen and (max-width: 770px) {  
+    .navbar-container{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        
+    }
+    
+    .search{
+        //margin: auto;
+        min-width: 0;
+        width: 100%;
+    }
+
+    .add-request-btn{
+        width: 100%;
+        margin-top: 10px;
+    }
+}

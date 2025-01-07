@@ -1,0 +1,122 @@
+
+.sidenav{
+    height: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    
+    z-index: 1000;
+    position: fixed; // An element with position: fixed; is positioned relative to the viewport, which means it always stays in the same place even if the page is scrolled
+    // top: 0; // The top CSS property sets the vertical position of a positioned element. This inset property has no effect on non-positioned elements.
+    top: 58px;
+    
+    width: 5rem;
+    transition: 0.1s;
+    
+    -webkit-box-shadow: 5px 5px 10px -6px rgba(0,0,0,0.87); 
+    box-shadow: 5px 5px 10px -6px rgba(0,0,0,0.87);
+    
+}
+
+hr{
+    margin: 0 1rem 0 1rem;
+    border: 1;
+    opacity: 0.25;
+}
+
+
+.sidenav-collapsed{
+    width: 15rem !important;
+}
+
+.logo-container{
+    display: flex;
+    align-items: center;
+    //justify-content: space-between;
+    padding: 1rem;
+    width: 100%;
+    
+    
+    .logo{
+        display: flex;    
+        text-align: center;
+        background-color: transparent;
+        border: 0;
+        font-size: 2rem;
+        padding: 0.5rem;
+        color: white;
+        cursor: pointer;
+    }
+
+    .logo-text{
+        color: white;
+        font-size: 1.5rem;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    .btn-close{
+        background-color: transparent;
+        border: 0;
+        font-size: 2rem;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+.sidenav-nav{
+    margin: 0;
+    // list-style: none;
+    padding: 1.05rem;
+    display: flex;
+    
+    flex-direction: column;
+    align-items: center;
+    flex: 1 1 auto;
+}
+
+
+.sidenav-item{
+    width: 100%;
+    // padding: 0.5rem;
+}
+
+.btn:hover{
+    background-color: #6299ec;
+    // border-radius: 8px;
+}
+    
+
+.sidenav-item-link{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+
+}
+
+.sidenav-link-icon{
+    font-size: 1.6rem;
+    
+}
+
+.sidenav-link-text{
+    font-size: 1.2rem;
+    margin-left: 0.7rem;
+}
+
+.sidenav-footer{
+    padding: 1.10rem;
+}
+
+
+li{
+    list-style: none;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 600px) {    
+    .sidenav{
+        width: 0rem;
+    }
+}

@@ -1,0 +1,7 @@
+
+<div class="" style="display: flex; flex-direction: column;">
+    <app-header (onNavStateChange)="(onNavStateChange($event))" />
+    <app-sidenav [collapsed]="isSideNavCollapsed" />
+</div>
+
+<app-body [collapsed]="isSideNavCollapsed"></app-body>

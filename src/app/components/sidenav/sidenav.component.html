@@ -1,0 +1,24 @@
+<div class="sidenav bg-light" [class]="collapsed ? 'sidenav-collapsed' : ''">
+    <!--
+    <div class="logo-container">
+        
+        <button class="logo" (click)="onLogoClick()">
+            <i class="lni lni-dashboard-square-1"></i>
+        </button>
+        <div class="logo-text" *ngIf="collapsed">OrderMS</div>
+    </div>
+    <hr>
+    -->
+    <ul class="sidenav-nav" *ngIf="screenWidth >= 600 || collapsed">
+        <li class="sidenav-item" *ngFor="let item of navbarItems">
+            
+            <button class="btn d-flex align-items-center p-2 mt-3 w-100 rounded-3 " [routerLink]="item.path" routerLinkActive="router-link-active">
+                <i class="sidenav-link-icon" [class]="item.icon" ></i>
+                <span class="sidenav-link-text" *ngIf="collapsed">{{item.label}}</span>
+            </button>
+        </li>
+    </ul>
+
+ 
+   
+</div>

@@ -1,0 +1,49 @@
+<div class="modal-header">
+    <!--<h4 class="modal-title">Richiesta</h4>-->
+    <button type="button" class="btn btn-success">Approva</button>
+    <button type="button" class="btn btn-danger ms-1">Rifiuta</button>
+    
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+<div class="modal-body">
+    <h4 class="modal-body-title">Aggiustare condizionatore</h4>
+    <h6 class="modal-body-subtitle">16/10/2025</h6>
+    <p class="modal-body-description lh-sm">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged</p>
+    <hr>
+
+    <h4 class="modal-body-title">Dettagli</h4>
+
+    <table class="modal-body-details">
+        <tr>
+            <td style="min-width: 100px">Priorità: </td>
+            <td>
+                <span class="dot" [class]="proprityClass"></span>
+                Low</td>
+        </tr>
+        <tr>
+            <td>ID: </td>
+            <td>#123</td>
+        </tr>
+        <tr>
+            <td>Cliente: </td>
+            <td>Lorenzo Reho</td>
+        </tr>
+        <tr>
+            <td>Orario: </td>
+            <td>16:45</td>
+        </tr>
+        <tr>
+            <td>Telefono: </td>
+            <td>3892621108</td>
+        </tr>
+        <tr>
+            <td>Indirizzo: </td>
+            <td>Via Ugo Foscolo 95 Racale (LE)</td>
+        </tr>
+        
+
+    </table>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close('Close click')">Close</button>
+</div>
