@@ -1,6 +1,5 @@
 <!-- TODO: MODULARE-->
 <nav class="navbar mb-2">
-    <div class="navbar-container">
         <a class="navbar-brand fw-bold fs-2 text-dark">Richieste</a>
       
         <form class="d-flex search" role="search">
@@ -14,7 +13,6 @@
             <i class="lni lni-plus"></i>
             <span>Richiesta</span>
         </button>
-    </div>
 </nav>
 
 
@@ -30,12 +28,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr (click)="open()">
-        <td>Aggiustare condizionatore</td>
-        <td>High</td>
-        <td>#325</td>
-        <td>Il condizionatore non si accende</td>
-        <td>Via Ugo Foscolo 95 Racale (LE)</td>
+      <tr (click)="open()" *ngFor="let req of repairRequests">
+        <td>{{req.title}}</td>
+        <td><span class="dot" [class]='req.priority == 1 ? "bg-danger" : req.priority == 2 ? "bg-warning" : "bg-success"'></span>
+          {{req.priority == 1 ? "High" : req.priority == 2 ? "Middle" : "Low"}}</td>
+        <td>#{{req.request_id}}</td>
+        <td>{{req.description}}</td>
+        <td>{{req.address}}</td>
 
       </tr>
     </tbody>

@@ -1,25 +1,32 @@
-import { Component, inject } from '@angular/core';
-
+import { Component, inject, OnInit  } from '@angular/core';
+import { CommonModule } from '@angular/common'
 import { ModalContentComponent } from '../components/modal-content/modal-content.component';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { RepairRequestService } from '../services/repair-request.service';
+import { RepairRequest } from '../interfaces/repair-request';
 
 @Component({
   selector: 'app-requests',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './requests.component.html',
   styleUrl: './requests.component.scss'
 })
-export class RequestsComponent {
+export class RequestsComponent implements OnInit{
   private modalService = inject(NgbModal);
+  repairRequests: RepairRequest[] = [];
+  priorityClass = "bg-danger"
+
+  constructor(private repairRequestService: RepairRequestService){}
+  
+  ngOnInit() : void {
+    this.repairRequestService.getRepairRequests().subscribe((repairRequests) => {
+      this.repairRequests = repairRequests;
+    });
+  }
+
   open() {
 		const modalRef = this.modalService.open(ModalContentComponent, {centered:true});
-    
 		modalRef.componentInstance.name = 'World';
-    
-    /*
-      TODO:
-      RICHIESTA HTTP per ottenere i dati corrispondenti alla richiesta cliccata e passarli al content component.
-    */
 	}
 
 

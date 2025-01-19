@@ -11,7 +11,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 export class ModalContentComponent {
   activeModal = inject(NgbActiveModal); // A reference to the currently opened (active) modal.
 
-  proprityClass="bg-success";
+  priorityClass="bg-success";
 
 	@Input() name: string;
 }
