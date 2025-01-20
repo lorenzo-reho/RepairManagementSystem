@@ -4,10 +4,11 @@ import { ModalContentComponent } from '../components/modal-content/modal-content
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { RepairRequestService } from '../services/repair-request.service';
 import { RepairRequest } from '../interfaces/repair-request';
+import {MatTableModule} from '@angular/material/table';
 
 @Component({
   selector: 'app-requests',
-  imports: [CommonModule],
+  imports: [CommonModule, MatTableModule],
   templateUrl: './requests.component.html',
   styleUrl: './requests.component.scss'
 })
@@ -15,6 +16,8 @@ export class RequestsComponent implements OnInit{
   private modalService = inject(NgbModal);
   repairRequests: RepairRequest[] = [];
   priorityClass = "bg-danger"
+  columndefs : any[] = ['title', 'priority', 'request_id', 'description', 'address'];
+  
 
   constructor(private repairRequestService: RepairRequestService){}
   
@@ -26,7 +29,20 @@ export class RequestsComponent implements OnInit{
 
   open() {
 		const modalRef = this.modalService.open(ModalContentComponent, {centered:true});
-		modalRef.componentInstance.name = 'World';
+		
+    for( let repairRequest of this.repairRequests){
+      modalRef.componentInstance.title = repairRequest.title;
+      modalRef.componentInstance.description = repairRequest.description;
+      modalRef.componentInstance.priority = repairRequest.priority;
+      modalRef.componentInstance.id = repairRequest.request_id;
+      modalRef.componentInstance.address = repairRequest.address;
+      /* TODO le altre informazioni...*/
+      
+      // modalRef.componentInstance.id = repairRequest.request_id;
+      
+
+    }
+    // modalRef.componentInstance.name = 'World';
 	}
 
 

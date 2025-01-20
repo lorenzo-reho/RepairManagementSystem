@@ -5,7 +5,7 @@ const config = require('../config');
 async function getAllRepairRequests(){
   
   const rows = await db.query(
-    `SELECT request_id, title, priority, description, address FROM repair_requests`
+    "SELECT request_id, title, priority, SUBSTR(`description`, 1, 40) AS description, address FROM repair_requests"
   );
 
   return rows;
