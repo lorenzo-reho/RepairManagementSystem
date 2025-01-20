@@ -1,5 +1,5 @@
 import { Component, inject, OnInit  } from '@angular/core';
-import { CommonModule } from '@angular/common'
+import { CommonModule, DatePipe } from '@angular/common'
 import { ModalContentComponent } from '../components/modal-content/modal-content.component';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { RepairRequestService } from '../services/repair-request.service';
@@ -15,6 +15,8 @@ import {MatTableModule} from '@angular/material/table';
 export class RequestsComponent implements OnInit{
   private modalService = inject(NgbModal);
   repairRequests: RepairRequest[] = [];
+  // repairRequest: RepairRequest;
+  
   priorityClass = "bg-danger"
   columndefs : any[] = ['title', 'priority', 'request_id', 'description', 'address'];
   
@@ -27,19 +29,31 @@ export class RequestsComponent implements OnInit{
     });
   }
 
-  open(index: number) {
-		const modalRef = this.modalService.open(ModalContentComponent, {centered:true});
-		
-    modalRef.componentInstance.title = this.repairRequests[index].title;
-    modalRef.componentInstance.description = this.repairRequests[index].description;
-    modalRef.componentInstance.priority = this.repairRequests[index].priority;
-    modalRef.componentInstance.id = this.repairRequests[index].request_id;
-    modalRef.componentInstance.address = this.repairRequests[index].address;
-      /* TODO le altre informazioni...*/
+
+  
+
+  open(index: number) : void{
+
+    const modalRef = this.modalService.open(ModalContentComponent, {centered:true});
+
+    this.repairRequestService.getCompleteRepairRequest(this.repairRequests[index].request_id).subscribe((repairRequest) => {   
       
-      // modalRef.componentInstance.id = repairRequest.request_id;
+      var datePipe = new DatePipe('en-US');
+
+      modalRef.componentInstance.title = repairRequest.title;
+      modalRef.componentInstance.description = repairRequest.description;
+      modalRef.componentInstance.priority = repairRequest.priority;
+      modalRef.componentInstance.id = repairRequest.request_id;
+      modalRef.componentInstance.name = repairRequest.name;
+      modalRef.componentInstance.surname = repairRequest.surname;
+      modalRef.componentInstance.address = repairRequest.address;
+      modalRef.componentInstance.telephone = repairRequest.telephone;
+      modalRef.componentInstance.date = datePipe.transform(repairRequest.date, 'dd/MM/yyyy');
       
-    // modalRef.componentInstance.name = 'World';
+      
+    });
+    
+
 	}
 
 

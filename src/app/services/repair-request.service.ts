@@ -15,4 +15,9 @@ export class RepairRequestService {
   getRepairRequests(): Observable<RepairRequest[]> {
     return this.http.get<RepairRequest[]>(`${this.baseUrl}/repair-requests`);
   }
+
+  getCompleteRepairRequest(id: number): Observable<RepairRequest> {
+    return this.http.get<RepairRequest>(`${this.baseUrl}/repair-requests/${id}`);
+  }
+
 }

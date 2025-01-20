@@ -11,6 +11,19 @@ async function getAllRepairRequests(){
   return rows;
 }
 
+// lista delle richieste ancora da approvare
+async function getCompleteRepairRequest(id){
+  
+  const row = await db.query(
+    `SELECT request_id, title, priority, description, address, name, surname, telephone, date  FROM repair_requests WHERE request_id=${id}`
+  );
+
+  return row;
+}
+
+
+
 module.exports = {
-  getAllRepairRequests
+  getAllRepairRequests,
+  getCompleteRepairRequest
 }

@@ -4,4 +4,8 @@ export interface RepairRequest {
     description: string
     priority: number
     address: string
+    name: string
+    surname: string
+    date: Date
+    telephone: string
 }
