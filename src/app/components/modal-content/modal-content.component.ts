@@ -24,4 +24,7 @@ export class ModalContentComponent {
   @Input() telephone: string;
   @Input() address: string;
   
+  @Input() loaded: boolean = false;
+  
+  
 }

@@ -6,44 +6,48 @@
     <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
 </div>
 <div class="modal-body">
-    <h4 class="modal-body-title">{{title}}</h4>
-    <h6 class="modal-body-subtitle">{{date}}</h6>
-    <p class="modal-body-description lh-sm">{{description}}</p>
-    <hr>
+    @if (loaded) {
+        <h4 class="modal-body-title">{{title}}</h4>
+        <h6 class="modal-body-subtitle">{{date}}</h6>
+        <p class="modal-body-description lh-sm">{{description}}</p>
+        <hr>
 
-    <h4 class="modal-body-title">Dettagli</h4>
+        <h4 class="modal-body-title">Dettagli</h4>
 
-    <table class="modal-body-details">
-        <tr>
-            <td style="min-width: 100px">Priorità: </td>
-            <td>
-                <span class="dot" [class]='priority == 1 ? "bg-danger" : priority == 2 ? "bg-warning" : "bg-success"'></span>
-                {{priority == 1 ? "High" : priority == 2 ? "Mid" : "Low"}}
-            </td>
-        </tr>
-        <tr>
-            <td>ID: </td>
-            <td>#{{id}}</td>
-        </tr>
-        <tr>
-            <td>Cliente: </td>
-            <td>{{name}} {{surname}}</td>
-        </tr>
-        <tr>
-            <td>Orario: </td>
-            <td>16:45</td>
-        </tr>
-        <tr>
-            <td>Telefono: </td>
-            <td>{{telephone}}</td>
-        </tr>
-        <tr>
-            <td>Indirizzo: </td>
-            <td>{{address}}</td>
-        </tr>
-        
+        <table class="modal-body-details">
+            <tr>
+                <td style="min-width: 100px">Priorità: </td>
+                <td>
+                    <span class="dot" [class]='priority == 1 ? "bg-danger" : priority == 2 ? "bg-warning" : "bg-success"'></span>
+                    {{priority == 1 ? "High" : priority == 2 ? "Mid" : "Low"}}
+                </td>
+            </tr>
+            <tr>
+                <td>ID: </td>
+                <td>#{{id}}</td>
+            </tr>
+            <tr>
+                <td>Cliente: </td>
+                <td>{{name}} {{surname}}</td>
+            </tr>
+            <tr>
+                <td>Orario: </td>
+                <td>16:45</td>
+            </tr>
+            <tr>
+                <td>Telefono: </td>
+                <td>{{telephone}}</td>
+            </tr>
+            <tr>
+                <td>Indirizzo: </td>
+                <td>{{address}}</td>
+            </tr>
+            
 
-    </table>
+        </table>
+    } @else {
+        Loading...
+    }
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close('Close click')">Close</button>

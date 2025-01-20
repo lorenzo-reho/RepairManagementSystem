@@ -50,7 +50,9 @@ export class RequestsComponent implements OnInit{
       modalRef.componentInstance.telephone = repairRequest.telephone;
       modalRef.componentInstance.date = datePipe.transform(repairRequest.date, 'dd/MM/yyyy');
       
+      modalRef.componentInstance.loaded = true;
       
+
     });
     
 
