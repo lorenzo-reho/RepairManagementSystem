@@ -27,21 +27,18 @@ export class RequestsComponent implements OnInit{
     });
   }
 
-  open() {
+  open(index: number) {
 		const modalRef = this.modalService.open(ModalContentComponent, {centered:true});
 		
-    for( let repairRequest of this.repairRequests){
-      modalRef.componentInstance.title = repairRequest.title;
-      modalRef.componentInstance.description = repairRequest.description;
-      modalRef.componentInstance.priority = repairRequest.priority;
-      modalRef.componentInstance.id = repairRequest.request_id;
-      modalRef.componentInstance.address = repairRequest.address;
+    modalRef.componentInstance.title = this.repairRequests[index].title;
+    modalRef.componentInstance.description = this.repairRequests[index].description;
+    modalRef.componentInstance.priority = this.repairRequests[index].priority;
+    modalRef.componentInstance.id = this.repairRequests[index].request_id;
+    modalRef.componentInstance.address = this.repairRequests[index].address;
       /* TODO le altre informazioni...*/
       
       // modalRef.componentInstance.id = repairRequest.request_id;
       
-
-    }
     // modalRef.componentInstance.name = 'World';
 	}
 

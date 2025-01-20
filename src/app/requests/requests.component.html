@@ -1,4 +1,4 @@
-<!-- TODO: MODULARE-->
+<!-- TODO: MODULARE TUTTO-->
 <nav class="navbar mb-2">
         <a class="navbar-brand fw-bold fs-2 text-dark">Richieste</a>
       
@@ -79,8 +79,8 @@
     <tr mat-header-row *matHeaderRowDef="columndefs"></tr>
     <tr
         mat-row
-        *matRowDef="let row; columns: columndefs;"
-        (click)="open()"
+        *matRowDef="let row; let i = index; columns: columndefs;"
+        (click)="open(i)"
     ></tr>
   </table>
    
