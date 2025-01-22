@@ -12,7 +12,6 @@
     
     width: 5rem;
     transition: 0.1s;
-    
     -webkit-box-shadow: 5px 5px 10px -6px rgba(0,0,0,0.87); 
     box-shadow: 5px 5px 10px -6px rgba(0,0,0,0.87);
     
@@ -91,12 +90,12 @@ hr{
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: rgb(0, 0, 0);
 
 }
 
 .sidenav-link-icon{
     font-size: 1.6rem;
+    color: white;
     
 }
 

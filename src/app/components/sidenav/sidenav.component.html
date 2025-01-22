@@ -1,4 +1,4 @@
-<div class="sidenav bg-light" [class]="collapsed ? 'sidenav-collapsed' : ''">
+<div class="sidenav bg-dark" [class]="collapsed ? 'sidenav-collapsed' : ''">
     <!--
     <div class="logo-container">
         
@@ -12,9 +12,9 @@
     <ul class="sidenav-nav" *ngIf="screenWidth >= 600 || collapsed">
         <li class="sidenav-item" *ngFor="let item of navbarItems">
             
-            <button class="btn d-flex align-items-center p-2 mt-3 w-100 rounded-3 " [routerLink]="item.path" routerLinkActive="router-link-active">
+            <button class="btn d-flex align-items-center p-2 mt-3 w-100 rounded-3" [routerLink]="item.path" routerLinkActive="router-link-active">
                 <i class="sidenav-link-icon" [class]="item.icon" ></i>
-                <span class="sidenav-link-text" *ngIf="collapsed">{{item.label}}</span>
+                <span class="sidenav-link-text text-light" *ngIf="collapsed">{{item.label}}</span>
             </button>
         </li>
     </ul>

@@ -25,7 +25,7 @@ export class SidenavComponent implements OnInit{
 
       "icon": "lni lni-hammer-2",
       "label": "Ordini",
-      "path": "/orders"
+      "path": "/work-orders"
     },
     {
 

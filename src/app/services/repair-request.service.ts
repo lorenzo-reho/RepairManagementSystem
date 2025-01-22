@@ -12,8 +12,12 @@ export class RepairRequestService {
 
   constructor(private http: HttpClient) { }
 
-  getRepairRequests(): Observable<RepairRequest[]> {
-    return this.http.get<RepairRequest[]>(`${this.baseUrl}/repair-requests`);
+  getNewRepairRequests(): Observable<RepairRequest[]> {
+    return this.http.get<RepairRequest[]>(`${this.baseUrl}/repair-requests/new`);
+  }
+
+  getApprovedRepairRequests(): Observable<RepairRequest[]> {
+    return this.http.get<RepairRequest[]>(`${this.baseUrl}/repair-requests/approved`);
   }
 
   getCompleteRepairRequest(id: number): Observable<RepairRequest> {

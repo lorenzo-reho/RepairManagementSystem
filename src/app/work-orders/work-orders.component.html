@@ -1,23 +1,23 @@
 <!-- TODO: MODULARE TUTTO-->
 <nav class="navbar mb-2">
-        <a class="navbar-brand fw-bold fs-2 text-dark">Richieste</a>
-      
-        <form class="d-flex search" role="search">
-            <input class="form-control me-2" id="nav-search" type="search" placeholder="Search" aria-label="Search">
-            <button  class="btn btn-outline-secondary d-flex align-items-center search-btn">
-                <i class="lni lni-search-text"></i>
-            </button>
-        </form>
-        
-        <button  class="btn btn-success d-flex align-items-center add-request-btn">
-            <i class="lni lni-plus"></i>
-            <span>Richiesta</span>
+    <a class="navbar-brand fw-bold fs-2 text-dark">Ordini</a>
+  
+    <form class="d-flex search" role="search">
+        <input class="form-control me-2" id="nav-search" type="search" placeholder="Search" aria-label="Search">
+        <button  class="btn btn-outline-secondary d-flex align-items-center search-btn">
+            <i class="lni lni-search-text"></i>
         </button>
+    </form>
+    
+    <button  class="btn btn-success d-flex align-items-center add-request-btn">
+        <i class="lni lni-plus"></i>
+        <span>Ordine</span>
+    </button>
 </nav>
 
 
 <div class="table-responsive">
-
+    
   <table mat-table [dataSource]="repairRequests" class="mat-elevation-z8">
     
     <ng-container matColumnDef="title">
@@ -55,26 +55,5 @@
         (click)="open(i)"
     ></tr>
   </table>
-   
-</div>
 
-
-<!--
-<div class="modal" id="example" >
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()"></button>
-      </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeModal()">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
 </div>
--->

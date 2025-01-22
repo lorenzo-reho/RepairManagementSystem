@@ -1,0 +1,62 @@
+.btn{
+    border-radius: 10px;
+}
+
+.btn i{
+    font-size: 1.8rem;
+}
+
+.btn span{
+    font-size: 1.15rem;
+}
+
+
+.search{
+    width: 350px;
+}
+
+#nav-search{
+    background-color: rgb(224, 224, 224);
+    border-radius: 10px;
+}
+
+.mat-mdc-header-row{
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.mat-mdc-table{
+    background-color: #fff;
+}
+
+.mat-mdc-row{
+    font-size: 1rem;
+    font-weight: 400;
+    border-color: #fff !important;
+}
+
+.mat-mdc-header-cell,.mat-mdc-cell{
+    border-color: #cecece !important;
+    padding: 0.6rem;
+}
+
+
+.mat-mdc-row:hover .mat-mdc-cell {
+    background-color: #eee;
+}
+
+
+@media screen and (max-width: 770px) {  
+
+    
+    .search{
+        //margin: auto;
+        min-width: 0;
+        width: 100%;
+    }
+
+    .add-request-btn{
+        width: 100%;
+        margin-top: 10px;
+    }
+}

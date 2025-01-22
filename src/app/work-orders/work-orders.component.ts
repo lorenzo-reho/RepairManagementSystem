@@ -6,14 +6,15 @@ import { RepairRequestService } from '../services/repair-request.service';
 import { RepairRequest } from '../interfaces/repair-request';
 import {MatTableModule} from '@angular/material/table';
 
+
 @Component({
-  selector: 'app-requests',
+  selector: 'app-work-orders',
   imports: [CommonModule, MatTableModule],
-  templateUrl: './requests.component.html',
-  styleUrl: './requests.component.scss'
+  templateUrl: './work-orders.component.html',
+  styleUrl: './work-orders.component.scss'
 })
-export class RequestsComponent implements OnInit{
-  private modalService = inject(NgbModal);
+export class WorkOrdersComponent  implements OnInit{
+private modalService = inject(NgbModal);
   repairRequests: RepairRequest[] = [];
   // repairRequest: RepairRequest;
   
@@ -24,7 +25,7 @@ export class RequestsComponent implements OnInit{
   constructor(private repairRequestService: RepairRequestService){}
   
   ngOnInit() : void {
-    this.repairRequestService.getNewRepairRequests().subscribe((repairRequests) => {
+    this.repairRequestService.getApprovedRepairRequests().subscribe((repairRequests) => {
       this.repairRequests = repairRequests;
     });
   }
@@ -54,7 +55,6 @@ export class RequestsComponent implements OnInit{
     });
     
 
-	}
-
+  }
 
 }

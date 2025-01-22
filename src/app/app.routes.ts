@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
 import { BodyComponent } from './body/body.component';
 import { RequestsComponent } from './requests/requests.component';
-import { OrdersComponent } from './orders/orders.component';
 import { UsersComponent } from './users/users.component';
 import { SettingsComponent } from './settings/settings.component';
+import { WorkOrdersComponent } from './work-orders/work-orders.component';
 
 export const routes: Routes = [
     {
@@ -17,9 +17,9 @@ export const routes: Routes = [
         component: RequestsComponent
     },
     {
-        path: 'orders',
+        path: 'work-orders',
         pathMatch: 'full',
-        component: OrdersComponent
+        component: WorkOrdersComponent
     },
     {
         path: 'users',
