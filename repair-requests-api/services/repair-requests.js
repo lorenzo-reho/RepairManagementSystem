@@ -24,17 +24,38 @@ async function getAllApprovedRepairRequests(){
 // lista delle richieste ancora da approvare
 async function getCompleteRepairRequest(id){
   
-  const row = await db.query(
+  const row = await db.queryDetail(
     `SELECT request_id, title, priority, description, address, name, surname, telephone, date  FROM repair_requests WHERE request_id=${id}`
   );
 
   return row;
 }
 
+// lista delle richieste ancora da approvare
+async function approveRequest(id){
+  
+  const n = await db.update(
+    `UPDATE repair_requests SET approved=1 WHERE request_id=${id}`
+  );
+
+  return n;
+}
+
+
+async function denyRequest(id){
+  
+  const n = await db.update(
+    `UPDATE repair_requests SET approved=0 WHERE request_id=${id}`
+  );
+
+  return n;
+}
 
 
 module.exports = {
   getAllNewRepairRequests,
   getAllApprovedRepairRequests,
-  getCompleteRepairRequest
+  getCompleteRepairRequest,
+  denyRequest,
+  approveRequest
 }

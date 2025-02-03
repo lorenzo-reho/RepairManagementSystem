@@ -22,13 +22,16 @@ export class RequestsComponent implements OnInit{
   
 
   constructor(private repairRequestService: RepairRequestService){}
-  
+
   ngOnInit() : void {
+    this.fetchContent();
+  }
+
+  fetchContent(): void{
     this.repairRequestService.getNewRepairRequests().subscribe((repairRequests) => {
       this.repairRequests = repairRequests;
     });
   }
-
 
   open(index: number) : void{
 
@@ -52,7 +55,14 @@ export class RequestsComponent implements OnInit{
       
 
     });
-    
+
+    modalRef.result.then((result) => {
+      console.log("refetch");
+      this.fetchContent();
+    }).catch((error) => {
+      console.log(error);
+    });
+
 
 	}
 

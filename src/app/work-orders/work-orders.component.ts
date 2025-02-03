@@ -25,6 +25,11 @@ private modalService = inject(NgbModal);
   constructor(private repairRequestService: RepairRequestService){}
   
   ngOnInit() : void {
+    this.fetchContent();
+  }
+
+
+  fetchContent() : void{
     this.repairRequestService.getApprovedRepairRequests().subscribe((repairRequests) => {
       this.repairRequests = repairRequests;
     });
@@ -53,7 +58,13 @@ private modalService = inject(NgbModal);
       
 
     });
-    
+
+    modalRef.result.then((result) => {
+      console.log("refetch");
+      this.fetchContent();
+    }).catch((error) => {
+      console.log(error);
+    });
 
   }
 

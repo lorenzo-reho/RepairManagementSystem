@@ -1,7 +1,7 @@
 <div class="modal-header">
     <!--<h4 class="modal-title">Richiesta</h4>-->
-    <button type="button" class="btn btn-success">Approva</button>
-    <button type="button" class="btn btn-danger ms-1">Rifiuta</button>
+    <button type="button" class="btn btn-success" (click)="onClickApproveRequest()" [disabled]="approveButtonDisabled">Approva</button>
+    <button type="button" class="btn btn-danger ms-1" (click)="onClickDenyRequest()" [disabled]="denyButtonDisabled">Rifiuta</button>
     
     <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
 </div>
@@ -24,11 +24,15 @@
             </tr>
             <tr>
                 <td>ID: </td>
-                <td>#{{id}}</td>
+                <td>
+                    #{{id}}
+                </td>
             </tr>
             <tr>
                 <td>Cliente: </td>
-                <td>{{name}} {{surname}}</td>
+                <td>
+                    {{name}} {{surname}}
+                </td>
             </tr>
             <tr>
                 <td>Orario: </td>
@@ -36,19 +40,49 @@
             </tr>
             <tr>
                 <td>Telefono: </td>
-                <td>{{telephone}}</td>
+                <td>
+                    @if (editMode) {
+
+                        <div class="form-group">
+                            <input type="text" class="form-control"  value="{{telephone}}">
+                        </div>
+                    }@else{
+                        {{telephone}}    
+                    }
+                    
+                </td>
             </tr>
             <tr>
                 <td>Indirizzo: </td>
-                <td>{{address}}</td>
-            </tr>
-            
+                <td>
+                <!--{{address}}-->
+                    
+                    @if (editMode) {
 
+                        <div class="form-group">
+                            <input type="text" class="form-control"  value="{{address}}">
+                        </div>
+                    }@else{
+                        {{address}}    
+                    }
+                
+                </td>
+            </tr>
         </table>
     } @else {
         Loading...
     }
 </div>
 <div class="modal-footer">
+    <div class="modal-footer-edit">
+        @if(!editMode){
+            <button type="button" class="btn btn-outline-secondary" (click)="switchMode()">Edit</button>
+        
+        }@else{
+            <button type="button" class="btn btn-outline-secondary" (click)="onSaveButtonClick()">Save</button>
+            <button type="button" class="btn btn-outline-secondary ms-1" (click)="switchMode()">Cancel</button>
+        }
+    </div>
     <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close('Close click')">Close</button>
+    
 </div>
