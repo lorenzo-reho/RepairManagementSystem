@@ -17,7 +17,7 @@ export class RepairRequestService {
     
     const params = new HttpParams({});
     var headers = new HttpHeaders({'Accept': 'application/json', 'Content-Type': 'application/json'});
-    console.log(id);
+    
     return this.http.put<any>(`${this.baseUrl}/repair-requests/approve/${id}`, params, {headers});
 
   }
@@ -27,9 +27,14 @@ export class RepairRequestService {
     
     const params = new HttpParams({});
     var headers = new HttpHeaders({'Accept': 'application/json', 'Content-Type': 'application/json'});
-    console.log(id);
+    
     return this.http.put<any>(`${this.baseUrl}/repair-requests/deny/${id}`, params, {headers});
 
+  }
+
+  saveRequest(id: number, body: any): any{
+    var headers = new HttpHeaders({'Accept': 'application/json', 'Content-Type': 'application/json'});
+    return this.http.put<any>(`${this.baseUrl}/repair-requests/update/${id}`, body, {headers});
   }
 
 

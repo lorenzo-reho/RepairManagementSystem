@@ -1,5 +1,6 @@
 const db = require('./db');
 const config = require('../config');
+const { TemplateLiteral } = require('@angular/compiler');
 
 // lista delle richieste ancora da approvare
 async function getAllNewRepairRequests(){
@@ -51,11 +52,19 @@ async function denyRequest(id){
   return n;
 }
 
+async function update(id, body){
+  const query = `UPDATE repair_requests SET title="${body.title}", description="${body.description}", name="${body.name}", surname="${body.surname}", telephone="${body.telephone}", address="${body.address}" WHERE request_id=${id}`;
+
+  const n = await db.update(query);
+
+  return n;
+}
 
 module.exports = {
   getAllNewRepairRequests,
   getAllApprovedRepairRequests,
   getCompleteRepairRequest,
   denyRequest,
+  update,
   approveRequest
 }

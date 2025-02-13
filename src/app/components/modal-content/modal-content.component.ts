@@ -6,10 +6,13 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { RepairRequestService } from '../../services/repair-request.service';
+import { FormsModule } from '@angular/forms';
+import { response } from 'express';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-modal-content',
-  imports: [MatFormFieldModule, MatInputModule, MatButtonModule],
+  imports: [MatFormFieldModule, MatInputModule, MatButtonModule, FormsModule],
   templateUrl: './modal-content.component.html',
   styleUrl: './modal-content.component.scss'
 })
@@ -32,7 +35,8 @@ export class ModalContentComponent {
   
   @Input() loaded: boolean = false;
   @Input() editMode: boolean = false;
-  
+
+
   constructor(private repairRequestService: RepairRequestService){}
 
   switchMode(): void {
@@ -40,6 +44,20 @@ export class ModalContentComponent {
   }
 
   onSaveButtonClick() : void{
+    
+    const body = {
+      'title': this.title,
+      'date': this.date,
+      'description': this.description,
+      'name': this.name,
+      'surname': this.surname,
+      'telephone': this.telephone,
+      'address': this.address
+    };
+
+    this.repairRequestService.saveRequest(this.id, body).subscribe((response: any) =>{
+      this.activeModal.close();
+    });
 
   }
 

@@ -1,11 +1,14 @@
 const express = require("express");
 const cors = require("cors");
+bodyParser = require('body-parser');
+
 const app = express();
 
 const port = 3000;
 const requestsRouter = require("./routes/repair-requests");
 
 app.use(express.json());
+app.use(bodyParser.json());
 
 app.use(
   express.urlencoded({

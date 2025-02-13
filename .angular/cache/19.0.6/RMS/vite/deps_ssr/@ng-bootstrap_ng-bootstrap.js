@@ -2,7 +2,7 @@ import { createRequire } from 'module';const require = createRequire(import.meta
 import {
   NG_VALIDATORS,
   NG_VALUE_ACCESSOR
-} from "./chunk-DDFIPOBR.js";
+} from "./chunk-OO52LHXI.js";
 import {
   DOCUMENT,
   NgTemplateOutlet,

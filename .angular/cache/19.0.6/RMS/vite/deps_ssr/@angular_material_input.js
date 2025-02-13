@@ -1,11 +1,5 @@
 import { createRequire } from 'module';const require = createRequire(import.meta.url);
 import {
-  FormGroupDirective,
-  NgControl,
-  NgForm,
-  Validators
-} from "./chunk-DDFIPOBR.js";
-import {
   MAT_FORM_FIELD,
   MatError,
   MatFormField,
@@ -17,6 +11,12 @@ import {
   MatSuffix
 } from "./chunk-VEODBRLF.js";
 import "./chunk-YYVGA3BD.js";
+import {
+  FormGroupDirective,
+  NgControl,
+  NgForm,
+  Validators
+} from "./chunk-OO52LHXI.js";
 import {
   ErrorStateMatcher,
   MatCommonModule,
