@@ -20,16 +20,6 @@
         }@else{
             <h4 class="modal-body-title">{{title}}</h4>    
         }
-        
-        @if (editMode) {
-            <div class="form-group">
-                <label for="title" class="form-label">Data:</label>
-                <input type="text" id="date" class="form-control"  [(ngModel)]="date">   
-            </div>
-        }@else {
-            <h6 class="modal-body-subtitle">{{date}}</h6>    
-        }
-
         <p class="modal-body-description lh-sm">
             @if (editMode) {
                 <div class="form-group">
@@ -57,6 +47,13 @@
                 <td>
                     #{{id}}
                 </td>
+            </tr>
+            <tr>
+                <td>Data: </td>
+                <td>
+                        {{date}}    
+                </td>
+                
             </tr>
             <tr>
                 <td>Cliente: </td>
@@ -100,6 +97,7 @@
                     }
                 
                 </td>
+
             </tr>
         </table>
     } @else {

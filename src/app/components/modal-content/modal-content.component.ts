@@ -1,14 +1,10 @@
-import {AfterViewInit, Component, ElementRef, OnDestroy, ViewChild, inject, Input} from '@angular/core';
-import { Data } from '@angular/router';
+import {Component, inject, Input} from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import {AutofillMonitor} from '@angular/cdk/text-field';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { RepairRequestService } from '../../services/repair-request.service';
 import { FormsModule } from '@angular/forms';
-import { response } from 'express';
-import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-modal-content',
