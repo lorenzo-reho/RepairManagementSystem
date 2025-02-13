@@ -45,7 +45,7 @@ async function approveRequest(id){
 async function denyRequest(id){
   
   const n = await db.update(
-    `UPDATE repair_requests SET approved=0 WHERE request_id=${id}`
+    `DELETE FROM repair_requests WHERE request_id=${id}`
   );
 
   return n;

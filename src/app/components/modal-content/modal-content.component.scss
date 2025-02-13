@@ -5,7 +5,7 @@
 
 .modal-body-description{
     color:#4b4b4b;
-    margin:  20px 0 20px 0;
+    margin:  0px 0 20px 0;
 
 }
 
@@ -14,8 +14,14 @@
     width: 90%;
 }
 
+label{
+    margin-top:5px;
+    font-weight: 500;
+    color: #302b27;
+}
+
 .form-group{
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 .modal-footer{

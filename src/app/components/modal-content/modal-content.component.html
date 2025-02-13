@@ -1,15 +1,45 @@
 <div class="modal-header">
     <!--<h4 class="modal-title">Richiesta</h4>-->
+    
     <button type="button" class="btn btn-success" (click)="onClickApproveRequest()" [disabled]="approveButtonDisabled">Approva</button>
+    
     <button type="button" class="btn btn-danger ms-1" (click)="onClickDenyRequest()" [disabled]="denyButtonDisabled">Rifiuta</button>
     
     <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
 </div>
 <div class="modal-body">
     @if (loaded) {
-        <h4 class="modal-body-title">{{title}}</h4>
-        <h6 class="modal-body-subtitle">{{date}}</h6>
-        <p class="modal-body-description lh-sm">{{description}}</p>
+        
+        @if (editMode) {
+
+            <div class="form-group">
+                <label for="title" class="form-label">Titolo:</label>
+                <input type="text" id="title" class="form-control"  value="{{title}}">
+            </div>
+            
+        }@else{
+            <h4 class="modal-body-title">{{title}}</h4>    
+        }
+        
+        @if (editMode) {
+            <div class="form-group">
+                <label for="title" class="form-label">Data:</label>
+                <input type="text" id="title" class="form-control"  value="{{date}}">   
+            </div>
+        }@else {
+            <h6 class="modal-body-subtitle">{{date}}</h6>    
+        }
+
+        <p class="modal-body-description lh-sm">
+            @if (editMode) {
+                <div class="form-group">
+                    <label for="description" class="form-label">Descrizione:</label>
+                    <textarea class="form-control" id="description" rows="3">{{description}}</textarea>
+                </div>
+            }@else {
+                {{description}}    
+            }
+        </p>
         <hr>
 
         <h4 class="modal-body-title">Dettagli</h4>
@@ -31,12 +61,15 @@
             <tr>
                 <td>Cliente: </td>
                 <td>
-                    {{name}} {{surname}}
+                    @if (editMode) {
+                        <div class="form-group d-flex flex-row">
+                            <input type="text" class="form-control me-1"  value="{{name}}">
+                            <input type="text" class="form-control ms-1"  value="{{surname}}">
+                        </div>
+                    }@else {
+                        {{name}} {{surname}}
+                    }
                 </td>
-            </tr>
-            <tr>
-                <td>Orario: </td>
-                <td>16:45</td>
             </tr>
             <tr>
                 <td>Telefono: </td>
