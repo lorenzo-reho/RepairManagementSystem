@@ -2,10 +2,10 @@
 
 const config = {
     db: {
-      host: "sql7.freesqldatabase.com",
-      user: "sql7758223",
-      password: "cfm5cd68YB",
-      database: "sql7758223",
+      host: "192.168.1.176",
+      user: "lorenzo1",
+      password: "password123",
+      database: "repairms",
       connectTimeout: 60000
     },
     listPerPage: 10,

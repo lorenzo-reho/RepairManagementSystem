@@ -292,6 +292,15 @@ function _getFocusedElementPierceShadowDom() {
 function _getEventTarget(event) {
   return event.composedPath ? event.composedPath()[0] : event.target;
 }
+function _isTestEnvironment() {
+  return (
+    // @ts-ignore
+    typeof __karma__ !== "undefined" && !!__karma__ || // @ts-ignore
+    typeof jasmine !== "undefined" && !!jasmine || // @ts-ignore
+    typeof jest !== "undefined" && !!jest || // @ts-ignore
+    typeof Mocha !== "undefined" && !!Mocha
+  );
+}
 
 // node_modules/@angular/cdk/fesm2022/private.mjs
 var appsWithLoaders = /* @__PURE__ */ new WeakMap();
@@ -386,6 +395,12 @@ function _isNumberValue(value) {
 }
 function coerceArray(value) {
   return Array.isArray(value) ? value : [value];
+}
+function coerceCssPixelValue(value) {
+  if (value == null) {
+    return "";
+  }
+  return typeof value === "string" ? value : `${value}px`;
 }
 function coerceElement(elementOrRef) {
   return elementOrRef instanceof ElementRef ? elementOrRef.nativeElement : elementOrRef;
@@ -639,40 +654,8 @@ var ObserversModule = class _ObserversModule {
   }], null, null);
 })();
 
-// node_modules/@angular/cdk/fesm2022/keycodes.mjs
-var ENTER = 13;
-var SHIFT = 16;
-var CONTROL = 17;
-var ALT = 18;
-var SPACE = 32;
-var ZERO = 48;
-var NINE = 57;
-var A = 65;
-var Z = 90;
-var META = 91;
-var MAC_META = 224;
-function hasModifierKey(event, ...modifiers) {
-  if (modifiers.length) {
-    return modifiers.some((modifier) => event[modifier]);
-  }
-  return event.altKey || event.shiftKey || event.ctrlKey || event.metaKey;
-}
-
-// node_modules/@angular/cdk/fesm2022/a11y.mjs
-var import_rxjs4 = __toESM(require_cjs(), 1);
-var import_operators3 = __toESM(require_operators(), 1);
-
-// node_modules/@angular/cdk/fesm2022/coercion/private.mjs
-var import_rxjs2 = __toESM(require_cjs(), 1);
-function coerceObservable(data) {
-  if (!(0, import_rxjs2.isObservable)(data)) {
-    return (0, import_rxjs2.of)(data);
-  }
-  return data;
-}
-
 // node_modules/@angular/cdk/fesm2022/layout.mjs
-var import_rxjs3 = __toESM(require_cjs(), 1);
+var import_rxjs2 = __toESM(require_cjs(), 1);
 var import_operators2 = __toESM(require_operators(), 1);
 var LayoutModule = class _LayoutModule {
   static ɵfac = function LayoutModule_Factory(__ngFactoryType__) {
@@ -771,7 +754,7 @@ var BreakpointObserver = class _BreakpointObserver {
   /**  A map of all media queries currently being listened for. */
   _queries = /* @__PURE__ */ new Map();
   /** A subject for all other observables to takeUntil based on. */
-  _destroySubject = new import_rxjs3.Subject();
+  _destroySubject = new import_rxjs2.Subject();
   constructor() {
   }
   /** Completes the active subject, signalling to all other observables to complete. */
@@ -797,8 +780,8 @@ var BreakpointObserver = class _BreakpointObserver {
   observe(value) {
     const queries = splitQueries(coerceArray(value));
     const observables = queries.map((query) => this._registerQuery(query).observable);
-    let stateObservable = (0, import_rxjs3.combineLatest)(observables);
-    stateObservable = (0, import_rxjs3.concat)(stateObservable.pipe((0, import_operators2.take)(1)), stateObservable.pipe((0, import_operators2.skip)(1), (0, import_operators2.debounceTime)(0)));
+    let stateObservable = (0, import_rxjs2.combineLatest)(observables);
+    stateObservable = (0, import_rxjs2.concat)(stateObservable.pipe((0, import_operators2.take)(1)), stateObservable.pipe((0, import_operators2.skip)(1), (0, import_operators2.debounceTime)(0)));
     return stateObservable.pipe((0, import_operators2.map)((breakpointStates) => {
       const response = {
         matches: false,
@@ -820,7 +803,7 @@ var BreakpointObserver = class _BreakpointObserver {
       return this._queries.get(query);
     }
     const mql = this._mediaMatcher.matchMedia(query);
-    const queryObservable = new import_rxjs3.Observable((observer) => {
+    const queryObservable = new import_rxjs2.Observable((observer) => {
       const handler = (e) => this._zone.run(() => observer.next(e));
       mql.addListener(handler);
       return () => {
@@ -858,6 +841,55 @@ var BreakpointObserver = class _BreakpointObserver {
 })();
 function splitQueries(queries) {
   return queries.map((query) => query.split(",")).reduce((a1, a2) => a1.concat(a2)).map((query) => query.trim());
+}
+var Breakpoints = {
+  XSmall: "(max-width: 599.98px)",
+  Small: "(min-width: 600px) and (max-width: 959.98px)",
+  Medium: "(min-width: 960px) and (max-width: 1279.98px)",
+  Large: "(min-width: 1280px) and (max-width: 1919.98px)",
+  XLarge: "(min-width: 1920px)",
+  Handset: "(max-width: 599.98px) and (orientation: portrait), (max-width: 959.98px) and (orientation: landscape)",
+  Tablet: "(min-width: 600px) and (max-width: 839.98px) and (orientation: portrait), (min-width: 960px) and (max-width: 1279.98px) and (orientation: landscape)",
+  Web: "(min-width: 840px) and (orientation: portrait), (min-width: 1280px) and (orientation: landscape)",
+  HandsetPortrait: "(max-width: 599.98px) and (orientation: portrait)",
+  TabletPortrait: "(min-width: 600px) and (max-width: 839.98px) and (orientation: portrait)",
+  WebPortrait: "(min-width: 840px) and (orientation: portrait)",
+  HandsetLandscape: "(max-width: 959.98px) and (orientation: landscape)",
+  TabletLandscape: "(min-width: 960px) and (max-width: 1279.98px) and (orientation: landscape)",
+  WebLandscape: "(min-width: 1280px) and (orientation: landscape)"
+};
+
+// node_modules/@angular/cdk/fesm2022/keycodes.mjs
+var ENTER = 13;
+var SHIFT = 16;
+var CONTROL = 17;
+var ALT = 18;
+var ESCAPE = 27;
+var SPACE = 32;
+var ZERO = 48;
+var NINE = 57;
+var A = 65;
+var Z = 90;
+var META = 91;
+var MAC_META = 224;
+function hasModifierKey(event, ...modifiers) {
+  if (modifiers.length) {
+    return modifiers.some((modifier) => event[modifier]);
+  }
+  return event.altKey || event.shiftKey || event.ctrlKey || event.metaKey;
+}
+
+// node_modules/@angular/cdk/fesm2022/a11y.mjs
+var import_rxjs4 = __toESM(require_cjs(), 1);
+var import_operators3 = __toESM(require_operators(), 1);
+
+// node_modules/@angular/cdk/fesm2022/coercion/private.mjs
+var import_rxjs3 = __toESM(require_cjs(), 1);
+function coerceObservable(data) {
+  if (!(0, import_rxjs3.isObservable)(data)) {
+    return (0, import_rxjs3.of)(data);
+  }
+  return data;
 }
 
 // node_modules/@angular/cdk/fesm2022/a11y.mjs
@@ -5221,12 +5253,21 @@ export {
   RtlScrollAxisType,
   supportsScrollBehavior,
   getRtlScrollAxisType,
+  _getEventTarget,
+  _isTestEnvironment,
   _CdkPrivateStyleLoader,
+  ESCAPE,
+  hasModifierKey,
   coerceBooleanProperty,
   coerceNumberProperty,
   _isNumberValue,
+  coerceArray,
+  coerceCssPixelValue,
   coerceElement,
   ObserversModule,
+  BreakpointObserver,
+  Breakpoints,
+  LiveAnnouncer,
   FocusMonitor,
   _IdGenerator,
   Directionality,
@@ -5238,4 +5279,4 @@ export {
   MatRippleModule,
   MatRippleLoader
 };
-//# sourceMappingURL=chunk-AZJVGATV.js.map
+//# sourceMappingURL=chunk-NIMPVPY4.js.map

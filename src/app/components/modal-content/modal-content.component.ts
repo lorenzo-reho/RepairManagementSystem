@@ -5,6 +5,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { RepairRequestService } from '../../services/repair-request.service';
 import { FormsModule } from '@angular/forms';
+import {MatSnackBar} from '@angular/material/snack-bar'
 
 @Component({
   selector: 'app-modal-content',
@@ -13,6 +14,8 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './modal-content.component.scss'
 })
 export class ModalContentComponent {
+  private _snackBar = inject(MatSnackBar);
+
   activeModal = inject(NgbActiveModal); // A reference to the currently opened (active) modal.
 
   priorityClass="bg-success";
@@ -27,16 +30,18 @@ export class ModalContentComponent {
   @Input() name: string;
   @Input() surname: string;
   @Input() telephone: string;
-  @Input() address: string;
-  
+  @Input() address: string;  
   @Input() loaded: boolean = false;
   @Input() editMode: boolean = false;
-
 
   constructor(private repairRequestService: RepairRequestService){}
 
   switchMode(): void {
     this.editMode = !this.editMode;
+  }
+
+  openSnackBar(message: string, action: string): void{
+    this._snackBar.open(message, action);
   }
 
   onSaveButtonClick() : void{
@@ -53,6 +58,7 @@ export class ModalContentComponent {
 
     this.repairRequestService.saveRequest(this.id, body).subscribe((response: any) =>{
       this.activeModal.close();
+      this.openSnackBar("Aggiornato con successo", "OK");
     });
 
   }
@@ -68,6 +74,8 @@ export class ModalContentComponent {
 
     this.repairRequestService.approveRequest(this.id).subscribe((response: any) => {
       this.activeModal.close();
+    
+      this.openSnackBar("Approvato con successo", "OK");
     });
 
   }
@@ -78,6 +86,8 @@ export class ModalContentComponent {
     
     this.repairRequestService.denyRequest(this.id).subscribe((response: any) => {
       this.activeModal.close();
+      
+      this.openSnackBar("Eliminato con successo", "OK");
     });
 
   }
