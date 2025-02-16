@@ -5,4 +5,5 @@ Semplice sistema di gestione delle richieste di riparazione.
 
 ### Demo:
 
+[![Demo](https://raw.githubusercontent.com/lorenzo-reho/RepairManagementSystem/main/thumbnail.jpg)](https://raw.githubusercontent.com/lorenzo-reho/RepairManagementSystem/main/demo.mp4)
 ![](demo.mp4)
