@@ -1,3 +1,5 @@
 node_modules
-.vscode/
-.angular/cache/
+.vscode/launch.json
+.vscode/settings.json
+.vscode/tasks.json
+.angular/
