@@ -8,7 +8,7 @@ import { RepairRequest } from '../interfaces/repair-request'; // Import the Comm
 })
 
 export class RepairRequestService {
-  private baseUrl = "http://192.168.1.117:3000";
+  private baseUrl = "http://192.168.1.176:3000";
 
   constructor(private http: HttpClient) { }
 
@@ -32,9 +32,9 @@ export class RepairRequestService {
 
   }
 
-  saveRequest(id: number, body: any): any{
+  saveRequest(id: number, updatedItem: RepairRequest): any{
     var headers = new HttpHeaders({'Accept': 'application/json', 'Content-Type': 'application/json'});
-    return this.http.put<any>(`${this.baseUrl}/repair-requests/update/${id}`, body, {headers});
+    return this.http.put<RepairRequest>(`${this.baseUrl}/repair-requests/update/${id}`, updatedItem, {headers});
   }
 
 

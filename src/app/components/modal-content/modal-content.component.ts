@@ -6,6 +6,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { RepairRequestService } from '../../services/repair-request.service';
 import { FormsModule } from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar'
+import { RepairRequest } from '../../interfaces/repair-request'; // Import the Comment interface
+
 
 @Component({
   selector: 'app-modal-content',
@@ -46,17 +48,19 @@ export class ModalContentComponent {
 
   onSaveButtonClick() : void{
     
-    const body = {
-      'title': this.title,
-      'date': this.date,
-      'description': this.description,
-      'name': this.name,
-      'surname': this.surname,
-      'telephone': this.telephone,
-      'address': this.address
+    const updatedItem: RepairRequest  = {
+      title: this.title,
+      date: this.date,
+      description: this.description,
+      name: this.name,
+      surname: this.surname,
+      telephone: this.telephone,
+      address: this.address,
+      request_id: this.id,
+      priority: this.priority
     };
 
-    this.repairRequestService.saveRequest(this.id, body).subscribe((response: any) =>{
+    this.repairRequestService.saveRequest(this.id, updatedItem).subscribe((response: any) =>{
       this.activeModal.close();
       this.openSnackBar("Aggiornato con successo", "OK");
     });

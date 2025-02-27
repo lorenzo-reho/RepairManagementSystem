@@ -28,9 +28,12 @@ export class RequestsComponent implements OnInit{
   }
 
   fetchContent(): void{
-    this.repairRequestService.getNewRepairRequests().subscribe((repairRequests) => {
-      this.repairRequests = repairRequests;
-    });
+    this.repairRequestService.getNewRepairRequests().subscribe(
+      
+      (repairRequests) => {this.repairRequests = repairRequests;},
+      err => {console.log(err);}
+
+  );
   }
 
   open(index: number) : void{
